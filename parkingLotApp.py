@@ -1,6 +1,5 @@
 from datetime import datetime, timedelta
 from flask import Flask, request
-
 import app as app
 
 
