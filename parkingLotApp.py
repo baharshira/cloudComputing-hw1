@@ -2,10 +2,9 @@ from datetime import datetime, timedelta
 from flask import Flask, request
 import app as app
 
+app = Flask(__name__)
 
 class Ticket:
-    app = Flask(__name__)
-
     def __init__(self, plate, parkingLot, ticketId, entryTime):
         self.plate = plate
         self.parkingLot = parkingLot
