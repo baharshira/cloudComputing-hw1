@@ -22,7 +22,7 @@ def create_ticket():
 
     # extract the plate and parkingLot values from the request parameters
     plate = request.args.get('plate')
-    parking_lot = request.args.get('parkingLot')
+    parkingLot = request.args.get('parkingLot')
 
     # save the current time as the entry time for the ticket
     entry_time = datetime.now().isoformat()
@@ -32,7 +32,7 @@ def create_ticket():
     last_ticket_id = ticket_id
 
     # create a new ticket object with the provided data and entry time
-    ticket = Ticket(plate, parking_lot, ticket_id, entry_time)
+    ticket = Ticket(plate, parkingLot, ticket_id, entry_time)
 
     # save the ticket to the global list
     tickets.append(ticket)
