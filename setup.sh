@@ -1,7 +1,6 @@
 # debug
 # set -o xtrace
 
-echo "Starting script"
 KEY_NAME="cloud-course-`date +'%N'`"
 KEY_PEM="$KEY_NAME.pem"
 
@@ -17,7 +16,7 @@ SEC_GRP="my-sg-`date +'%N'`"
 echo "setup firewall $SEC_GRP"
 aws ec2 create-security-group   \
     --group-name $SEC_GRP       \
-    --description "Access my instances"
+    --description "Access my instances" 
 
 # figure out my ip
 MY_IP=$(curl ipinfo.io/ip)
@@ -48,7 +47,7 @@ INSTANCE_ID=$(echo $RUN_INSTANCES | jq -r '.Instances[0].InstanceId')
 echo "Waiting for instance creation..."
 aws ec2 wait instance-running --instance-ids $INSTANCE_ID
 
-PUBLIC_IP=$(aws ec2 describe-instances  --instance-ids $INSTANCE_ID |
+PUBLIC_IP=$(aws ec2 describe-instances  --instance-ids $INSTANCE_ID | 
     jq -r '.Reservations[0].Instances[0].PublicIpAddress'
 )
 
