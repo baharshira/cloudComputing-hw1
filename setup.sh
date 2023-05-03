@@ -54,7 +54,7 @@ PUBLIC_IP=$(aws ec2 describe-instances  --instance-ids $INSTANCE_ID |
 echo "New instance $INSTANCE_ID @ $PUBLIC_IP"
 
 echo "deploying code to production"
-scp -i $KEY_PEM -o "StrictHostKeyChecking=no" -o "ConnectionAttempts=60" app.py ubuntu@$PUBLIC_IP:/home/ubuntu/
+scp -i $KEY_PEM -o "StrictHostKeyChecking=no" -o "ConnectionAttempts=60" parkingLotApp.py ubuntu@$PUBLIC_IP:/home/ubuntu/
 
 echo "setup production environment"
 ssh -i $KEY_PEM -o "StrictHostKeyChecking=no" -o "ConnectionAttempts=10" ubuntu@$PUBLIC_IP <<EOF
