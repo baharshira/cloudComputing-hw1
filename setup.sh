@@ -1,15 +1,7 @@
 # debug
 # set -o xtrace
 
-# update packages
-sudo apt update
-sudo apt-get install jq
-
-# install python and pip
-sudo apt install python3-pip -y
-
-# install flask
-pip3 install Flask
+export AWS_DEFAULT_REGION=us-east-1
 
 KEY_NAME="shirabahar-hw1-`date +'%N'`"
 KEY_PEM="$KEY_NAME.pem"
@@ -62,6 +54,12 @@ PUBLIC_IP=$(aws ec2 describe-instances  --instance-ids $INSTANCE_ID |
 )
 
 echo "New instance $INSTANCE_ID @ $PUBLIC_IP"
+
+# install python and pip
+sudo apt install python3-pip -y
+
+# install flask
+pip3 install Flask
 
 echo "deploying code to production"
 scp -i $KEY_PEM -o "StrictHostKeyChecking=no" -o "ConnectionAttempts=60" parkingLotApp.py ubuntu@$PUBLIC_IP:/home/ubuntu/
