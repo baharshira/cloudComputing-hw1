@@ -25,12 +25,10 @@ MY_IP=$(curl ipinfo.io/ip)
 echo "My IP: $MY_IP"
 
 
-echo "setup rule allowing SSH access to $MY_IP only"
 aws ec2 authorize-security-group-ingress        \
     --group-name $SEC_GRP --port 22 --protocol tcp \
     --cidr 0.0.0.0/0
 
-echo "setup rule allowing HTTP (port 5000) access to $MY_IP only"
 aws ec2 authorize-security-group-ingress        \
     --group-name $SEC_GRP --port 5000 --protocol tcp \
     --cidr 0.0.0.0/0
