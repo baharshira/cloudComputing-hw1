@@ -3,6 +3,7 @@
 
 # update packages
 sudo apt update
+sudo apt-get install jq
 
 # install python and pip
 sudo apt install python3-pip -y
