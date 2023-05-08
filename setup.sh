@@ -1,7 +1,16 @@
 # debug
 # set -o xtrace
 
-KEY_NAME="cloud-course-`date +'%N'`"
+# update packages
+sudo apt update
+
+# install python and pip
+sudo apt install python3-pip -y
+
+# install flask
+pip3 install Flask
+
+KEY_NAME="shirabahar-hw1-`date +'%N'`"
 KEY_PEM="$KEY_NAME.pem"
 
 echo "create key pair $KEY_PEM to connect to instances and save locally"
