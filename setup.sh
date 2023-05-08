@@ -40,7 +40,7 @@ UBUNTU_20_04_AMI="ami-042e8287309f5df03"
 echo "Creating Ubuntu 20.04 instance..."
 RUN_INSTANCES=$(aws ec2 run-instances   \
     --image-id $UBUNTU_20_04_AMI        \
-    --instance-type t3.micro            \
+    --instance-type t2.micro            \
     --key-name $KEY_NAME                \
     --security-groups $SEC_GRP)
 
