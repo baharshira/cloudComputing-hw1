@@ -28,12 +28,12 @@ echo "My IP: $MY_IP"
 echo "setup rule allowing SSH access to $MY_IP only"
 aws ec2 authorize-security-group-ingress        \
     --group-name $SEC_GRP --port 22 --protocol tcp \
-    --cidr $MY_IP/32
+    --cidr 0.0.0.0/0
 
 echo "setup rule allowing HTTP (port 5000) access to $MY_IP only"
 aws ec2 authorize-security-group-ingress        \
-    --group-name $SEC_GRP --port 0-65535 --protocol tcp \
-    --cidr $MY_IP/32
+    --group-name $SEC_GRP --port 5000 --protocol tcp \
+    --cidr 0.0.0.0/0
 
 UBUNTU_20_04_AMI="ami-042e8287309f5df03"
 
@@ -70,4 +70,4 @@ ssh -i $KEY_PEM -o "StrictHostKeyChecking=no" -o "ConnectionAttempts=10" ubuntu@
 EOF
 
 echo "test that it all worked"
-curl  --retry-connrefused --retry 10 --retry-delay 1  http://$PUBLIC_IP:0
+curl  --retry-connrefused --retry 10 --retry-delay 1  http://$PUBLIC_IP:5000
