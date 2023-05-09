@@ -72,7 +72,8 @@
 # set -o xtrace
 
 KEY_NAME="cloud-course-`date +'%N'`"
-KEY_PEM="$KEY_NAME.pem"
+#KEY_PEM="$KEY_NAME.pem"
+KEY_PEM="cloud-course-117593065.pem"
 
 echo "create key pair $KEY_PEM to connect to instances and save locally"
 aws ec2 create-key-pair --key-name $KEY_NAME \
